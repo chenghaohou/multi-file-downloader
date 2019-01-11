@@ -18,6 +18,7 @@ def decode_frame(frame_path, video_file_path):
         # cmd = 'ffmpeg -i {} -vf scale=-1:360 {}/image_%05d.jpg'.format(video_file_path, frame_path)
 
         # ffmpeg -i 33350141-102-9987625-053746.mp4 -vf select='eq(pict_type\,I)' -vsync 2  -f image2 core-%02d.jpeg
+        # 仅解码视频I帧
         cmd = 'ffmpeg -i {} -vf select=\'eq(pict_type\,I)\' -vsync 2 -f image2 {}/image_%05d.jpg'.format(video_file_path, frame_path)
         print('Processing: ', cmd)   
         subprocess.call(cmd, shell=True)
